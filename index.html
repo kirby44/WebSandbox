@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html>
-<body>
-    <h1>MediaRecorder Audio Format Support</h1>
-
-    <p id="webm-support">Checking...</p>
-    <p id="ogg-support">Checking...</p>
-    <p id="wav-support">Checking...</p>
-    <p id="mp3-support">Checking...</p>
-    <p id="mp4-support">Checking...</p>
-    <p id="aac-support">Checking...</p>
-
-    <script>
-        // Check if MediaRecorder is available
-        if (typeof MediaRecorder === 'undefined') {
-            alert('MediaRecorder is not supported in this browser.');
-        } else {
-            document.getElementById('webm-support').textContent = MediaRecorder.isTypeSupported('audio/webm') ? 'webm is supported' : 'webm is not supported';
-            document.getElementById('ogg-support').textContent = MediaRecorder.isTypeSupported('audio/ogg') ? 'ogg is supported' : 'ogg is not supported';
-            document.getElementById('wav-support').textContent = MediaRecorder.isTypeSupported('audio/wav') ? 'wav is supported' : 'wav is not supported';
-            document.getElementById('mp3-support').textContent = MediaRecorder.isTypeSupported('audio/mp3') ? 'mp3 is supported' : 'mp3 is not supported';
-            document.getElementById('mp4-support').textContent = MediaRecorder.isTypeSupported('audio/mp4') ? 'mp3 is supported' : 'mp3 is not supported';
-            document.getElementById('aac-support').textContent = MediaRecorder.isTypeSupported('audio/aac') ? 'aac is supported' : 'aac is not supported';
-        }
-    </script>
-</body>
+    <head>
+        <title>Socket.IO Test Page</title>
+        <script src="https://cdn.socket.io/4.1.3/socket.io.min.js" integrity="sha384-giK2E5ACQkQFyyLWgYT+XY+f5zcwOv9F7onV1l0TZeS7sj7snhddx5e7F5kv4Cx+" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1>Socket.IO Test</h1>
+        <script>
+            var socket = io.connect('http://localhost:5000');
+            socket.on('connect', function() {
+                socket.send('User has connected!');
+            });
+            socket.on('message', function(msg) {
+                console.log('Response from server: ' + msg);
+            });
+        </script>
+    </body>
 </html>
