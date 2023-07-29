@@ -23,13 +23,8 @@
             let red = document.getElementById('red').value;
             let green = document.getElementById('green').value;
             let blue = document.getElementById('blue').value;
-
-            fetch('http://localhost:8000/update_colors', {
+            fetch(`http://localhost:8000/update_colors?red=${red}&green=${green}&blue=${blue}`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `red=${red}&green=${green}&blue=${blue}`
             })
             .then(response => response.json())
             .then(data => {
