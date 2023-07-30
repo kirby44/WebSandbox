@@ -26,8 +26,12 @@
             let red = document.getElementById('red').value;
             let green = document.getElementById('green').value;
             let blue = document.getElementById('blue').value;
-            fetch(`${updateColorsURL}?red=${red}&green=${green}&blue=${blue}`, {
+            fetch(updateColorsURL, {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({red, green, blue})
             })
             .then(response => response.json())
             .then(data => {
